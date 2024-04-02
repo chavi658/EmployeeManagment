@@ -1,0 +1,17 @@
+/* AllEmployees.css */
+
+.employee-table {
+    border-collapse: collapse; /* סוגר את המרווחים בין התאים */
+    width: 100%; /* רוחב הטבלה */
+  }
+  
+  .employee-table th, .employee-table td {
+    border: 1px solid #ddd; /* מוסיף מסגרת לכל תא בטבלה */
+    padding: 8px; /* מרווח פנימי בתאים */
+    text-align: left; /* מיושר לשמאל */
+  }
+  
+  .employee-table th {
+    background-color: #f4ebeb; /* צבע רקע לכותרות העמודות */
+  }
+  
