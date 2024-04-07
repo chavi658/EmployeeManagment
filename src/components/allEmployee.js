@@ -124,6 +124,7 @@ import styled from 'styled-components';
 import { alpha, styled as muiStyled } from '@mui/material/styles';
 import React from 'react';
 import * as XLSX from 'xlsx';
+import { useState } from 'react';
 
 const StyledIconButton = muiStyled('button')(({ theme }) => ({
   background: 'none',
@@ -220,19 +221,21 @@ const AllEmployees = () => {
   const employees = useSelector(state => state.employees);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+const [filteredEmployees,setfilteredEmployees]=useState([]);
   React.useEffect(() => {
     axios.get("https://localhost:7094/api/Employee")
       .then(response => {
         console.log("Response data:", response.data);
         dispatch({ type: 'SET_EMPLOYEES', data: response.data });
+        setfilteredEmployees(response.data)
+
       })
       .catch(err => console.log(err));
   }, [dispatch]);
 
   const handleSearch = event => {
     const searchTerm = event.target.value.toLowerCase();
-    setSearchTerm(searchTerm);
+    filteredEmployees1(searchTerm);
   };
 
   const handleDelete = employeeToDelete => {
@@ -254,13 +257,18 @@ const AllEmployees = () => {
     console.log('Exporting employee list to Excel');
     exportToExcel(filteredEmployees);
   };
+const filteredEmployees1=(searchTerm)=>{
+  setfilteredEmployees([])
+ setfilteredEmployees(employees.filter(employee =>
 
-  const filteredEmployees = employees.filter(employee =>
-    Object.keys(employee).some(key =>
-      typeof employee[key] === 'string' &&
-      employee[key].toLowerCase().includes(searchTerm)
-    )
-  );
+  {
+ for( const key in employee)
+ if( typeof employee[key] === 'string' &&
+      employee[key].toLowerCase().includes(searchTerm.toLowerCase()))
+      return true;
+  }
+    ))
+}
 
   return (
     <div className="employee-list">
@@ -287,6 +295,7 @@ const AllEmployees = () => {
           <Table>
             <TableHead>
               <TableRow>
+                {/* <TableCell>Employee Number</TableCell> */}
                 <TableCell>First Name</TableCell>
                 <TableCell>Last Name</TableCell>
                 <TableCell>Employee ID</TableCell>

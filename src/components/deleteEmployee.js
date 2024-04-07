@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {useEffect} from "react"
 import Swal from "sweetalert2";
+
 const DeleteEmployee=()=>{
     const dispatch = useDispatch();
     const {state}=useLocation();
