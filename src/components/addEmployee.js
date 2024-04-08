@@ -26,9 +26,9 @@ import FormControl from "@mui/material/FormControl";
 import { getEmpployee } from "../server/employee";
 import InputGrid from "./inputGrid";
 const schema = yup.object({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
-  employeeId: yup.string().required(),
+  firstName: yup.string().required().min(2),
+  lastName: yup.string().required().min(2),
+  employeeId: yup.string().required().min(9).max(9),
   dateOfStartingWork: yup
     .date()
   ,
@@ -70,9 +70,6 @@ export default function AddEmployee() {
     control: control,
     name: "roleList"
   });
-
-
-
   useEffect(() => {
     getEmpployee()
       .then(response => {
@@ -90,10 +87,11 @@ export default function AddEmployee() {
     // אם ישנם נתונים של עובד (במקרה של עריכה)
     if (employeeData) {
       console.log("edit")
+      
       axios.put(`https://localhost:7094/api/Employee/${employeeData.id}`, data)
         .then((response) => {
-          console.log("then")
-          // console.log(response.data);
+          // console.log("then")
+           console.log(response.data);
         })
         .catch((error) => {
           console.error(error);
@@ -167,8 +165,6 @@ export default function AddEmployee() {
                             {role.roleName}                          </MenuItem>
                         ))}
                       </Select>
-
-
                       <FormHelperText>{errors?.roleList?.[index]?.roleId?.message}</FormHelperText>
                     </FormControl>
                   </Grid>
@@ -198,10 +194,6 @@ export default function AddEmployee() {
                           <EventIcon color="action" />
                         )
                       }}
-
-
-
-
                     />
                   </Grid>
                   <Grid item xs={12}>

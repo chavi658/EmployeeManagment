@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import EmployeeList from './components/allEmployee';
-import AllEmployees from './components/allEmployee';
-import EditEmployee from './components/editEmployee';
+
+//import AllEmployees from './components/allEmployee';
 import AddEmployee from './components/addEmployee';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import DeleteEmployee from './components/deleteEmployee';
+import AllEmployees from './components/allEmployee';
+
 function App() {
   return (
     <div className="App">

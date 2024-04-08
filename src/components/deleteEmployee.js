@@ -16,7 +16,7 @@ const DeleteEmployee=()=>{
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "העובד נמחק בהצלחה",
+                title:  `The employee ${state.firstName} was deleted `  ,
                 showConfirmButton: false,
                 timer: 1500
             });

@@ -114,8 +114,8 @@
 //   );
 // };
 
-// export default AllEmployees;
-//with changes
+// // export default AllEmployees;
+// with changes work is activate
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -130,7 +130,7 @@ import { RiDeleteBin6Line, RiPencilLine } from 'react-icons/ri';
 import { FaPlus } from 'react-icons/fa';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import SearchIcon from '@mui/icons-material/Search';
-import {Search,SearchContainer,SearchIconWrapper,StyledIcon,  StyledIconButton, StyledInputBase, TableWrapper} from './allEmployee.muiStyle';
+import { Search, SearchContainer, SearchIconWrapper, StyledIcon, StyledIconButton, StyledInputBase, TableWrapper } from './allEmployee.muiStyle';
 import { getEmpployeesDispatch } from '../server/employee';
 import { exportToExcel } from '../server/excel';
 
@@ -201,7 +201,11 @@ const AllEmployees = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredEmployees.map(employee => (
+              {filteredEmployees.filter(employee => !searchTerm ||
+                Object.values(employee).some(value =>
+                  String(value).toLowerCase().includes(searchTerm)
+                )
+              ).map(employee => (
                 <TableRow key={employee?.employeeId}>
                   <TableCell>{employee?.firstName}</TableCell>
                   <TableCell>{employee?.lastName}</TableCell>
@@ -219,6 +223,7 @@ const AllEmployees = () => {
                   </TableCell>
                 </TableRow>
               ))}
+
             </TableBody>
           </Table>
         </TableContainer>
@@ -228,6 +233,3 @@ const AllEmployees = () => {
 };
 
 export default AllEmployees;
-
-
-
