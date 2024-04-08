@@ -8,8 +8,8 @@ const DeleteEmployee=()=>{
     const dispatch = useDispatch();
     const {state}=useLocation();
     useEffect(()=>{
-        console.log("choosenEmployee",state.employeeId)
-        axios.delete(`https://localhost:7094/api/Employee/${state.employeeId}`)
+        console.log("choosenEmployee",state.id)
+        axios.delete(`https://localhost:7094/api/Employee/${state.id}`)
         .then(x => {
             // const newCategories = [...categories];
             console.log("delete",x.data)
