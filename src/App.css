@@ -10,7 +10,13 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  /* img:  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbxnWy2CuMrVaP4J5hNdUN9BEdFr0VNx2r1XtLMhE3sL4Lca1mcL3O_QWheenwmNy0Gy8&usqp=CAU */
   }
+}
+
+
+.App-logo {
+  max-width: 30px; /* גודל התמונה החדשה */
 }
 
 .App-header {

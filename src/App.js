@@ -7,6 +7,7 @@ import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import DeleteEmployee from './components/deleteEmployee';
 import AllEmployees from './components/allEmployee';
+import EmployeeDetails from './components/employeeDetails';
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         <Route path="/AddEmployee" element={<AddEmployee />} />
         <Route path="/EditEmployee" element={<AddEmployee />} />
         <Route path="/DeleteEmployee" element={<DeleteEmployee />} />
+        <Route path="/EmployeeDetails" element={<EmployeeDetails />} />
 
+        
       </Routes>
     </div>
   );

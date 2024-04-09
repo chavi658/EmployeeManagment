@@ -69,5 +69,12 @@ export const StyledIconButton = muiStyled('button')(({ theme }) => ({
       },
     },
   }));
-  
+export  const styles = `
+  .table-header-cell {
+    color: white; /* צבע הטקסט */
+   background-color: #1565c0; /* רקע */
+    font-weight: bold; /* משקל הגופן */
+    padding: 3px; /* רווחים */
+  }
+  `;
   
