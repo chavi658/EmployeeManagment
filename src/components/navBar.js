@@ -165,7 +165,8 @@ import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { FaPlus, FaFileExcel } from 'react-icons/fa';
+import { FaPlus, FaFileExcel, FaBars, FaHome } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
   '&:hover': {
@@ -176,7 +177,7 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
 
 export default function NavBar({ onAdd, onExport }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+const navigate=useNavigate()
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -184,6 +185,9 @@ export default function NavBar({ onAdd, onExport }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const onMenue=()=>{
+    navigate("/AllEmployees")
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -232,6 +236,11 @@ export default function NavBar({ onAdd, onExport }) {
               <FaFileExcel />
               Download to Excel
             </StyledMenuItem>
+            <StyledMenuItem onClick={onMenue}>
+            <FaHome />
+              Back To The Main Menu 
+            </StyledMenuItem>
+            
           </Menu>
         </Toolbar>
       </AppBar>
